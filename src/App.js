@@ -1,9 +1,10 @@
 import Header from './components/Header.js'
 
+
 function App() {
   return (
-    <div>
-      <Header/>
+    <div className='container'>
+      <Header title='Task Tracker' />
     </div>
   );
 }

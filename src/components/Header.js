@@ -1,14 +1,17 @@
-const Header = () => {
+import AddButton from './Button.js'
+import PropTypes from 'prop-types'
+
+const Header = ({title, buttonClick}) => {
     return (
-        <header>
-            <h1>Task Tracker</h1>
+        <header className='header'>
+            <h1>{title}</h1>
+            <AddButton text='Add' color='black' onclick={buttonClick}/>
         </header>
     )
 }
 
-//CSS
-const headerStyle = {
-    color: 'black',
-    backgroundColor: 'white'
+Header.propTypes = {
+    title: PropTypes.string,
+    buttonClick: PropTypes.func
 }
 export default Header
