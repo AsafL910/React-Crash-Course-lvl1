@@ -1,7 +1,7 @@
 import Header from './components/Header.js'
 import Tasks from './components/Tasks.js'
 import { useState } from 'react'
-import AddTask from './components/AddTask.js'
+import AddTask from './components/AddTaskForm/AddTask.js'
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -33,10 +33,15 @@ function App() {
       setTasks(tasks.map(task => task.id ===id ?  { ...task , reminder: !task.reminder} : task))
     }
 
+    const addTask = (task) => {
+      const newTask = {id: Math.floor(Math.random() * 10000) + 1, ...task}
+      setTasks([...tasks, newTask])
+    }
+
   return (
     <div className='container'>
-      <AddTask/>
       <Header title='Task Tracker' />
+      <AddTask onSubmit={addTask}/>   
       <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>
     </div>
   );
